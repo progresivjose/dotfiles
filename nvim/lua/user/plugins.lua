@@ -185,9 +185,19 @@ use({
       on_attach = function(bufnr)
         vim.keymap.set('n', ']h', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true, buffer = bufnr })
         vim.keymap.set('n', '[h', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true, buffer = bufnr })
-      end,
+        vim.keymap.set('n', 'gs', "<cmd>Gitsigns stage_hunk<CR>")
+        vim.keymap.set('n', 'gS', "<cmd>Gitsigns undo_stage_hunk<CR>")
+        vim.keymap.set('n', 'gp', "<cmd>Gitsigns preview_hunk<CR>")
+        vim.keymap.set('n', 'gb', "<cmd>Gitsigns blame_hunkCR>")
+      end
     })
   end,
+})
+
+-- Git commands
+use({
+    'tpope/vim-fugitive',
+    requires = 'tpope/vim-rhubarb'
 })
 
 -- Automatically set up your configuration after cloning packer.nvim
