@@ -2,7 +2,7 @@
 require('mason').setup()
 require('mason-lspconfig').setup({ automatic_installation = true })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilites())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- PHP
 require('lspconfig').intelephense.setup({ capabilities = capabilities })
@@ -16,6 +16,25 @@ require'lspconfig'.volar.setup{
 -- Tailwind
 require('lspconfig').tailwindcss.setup({ capabilities = capabilities })
 
+-- null-ls
+require('null-ls').setup({
+      sources = {
+         require('null-ls').builtins.diagnostics.eslint_d.with({
+               condition = function(utils)
+                  return utils.root_has_file({ '.eslintrc.js' })
+               end,
+            }),
+         require('null-ls').builtins.diagnostics.trail_space.with({ disable_filetypes = { 'NvimTree' } }),
+         require('null-ls').builtins.formatting.eslint_d.with({
+               condition = function(utils)
+                  return utils.root_has_file({ '.eslintrc.js' })
+               end,
+            }),
+         require('null-ls').builtins.formatting.prettierd,
+      }
+})
+
+require('mason-null-ls').setup({ automatic_installation = true })
 -- Keymaps
 vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
@@ -25,6 +44,13 @@ vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<CR>')
 vim.keymap.set('n', 'gr', ':Telescope lsp_references<CR>')
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+
+-- Commands
+-- vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting, {})
+vim.api.nvim_create_user_command('Format', 
+   function()
+      return vim.lsp.buf.formatting
+   end, {})
 
 -- Symbols
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
