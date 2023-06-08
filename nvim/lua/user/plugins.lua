@@ -53,6 +53,12 @@ use('christoomey/vim-tmux-navigator')
 -- Jump to the last location when opening a file.
 use('farmergreg/vim-lastplace')
 
+-- Enable * searching with visually selected text
+use('nelstrom/vim-visual-star-search')
+
+-- Automatically create parent dirs when saving
+use('jessarcher/vim-heritage')
+
 -- Automatically add closing brackets, quotes, etc.
 use({
     'windwp/nvim-autopairs',
