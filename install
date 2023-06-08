@@ -7,3 +7,6 @@ ln -s $DOTFILES/kitty $HOME/.config/kitty
 
 rm -rf $HOME/.config/nvim
 ln -s $DOTFILES/nvim $HOME/.config/nvim
+
+rm -rf $HOME/.config/phpactor
+ln -s $DOTFILES/phpactor $HOME/.config/phpactor
