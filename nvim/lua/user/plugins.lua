@@ -172,14 +172,6 @@ use({
   end,
 })
 
--- Add a dashboard
-use({
-    'glepnir/dashboard-nvim',
-    config = function()
-        require('user/plugins/dashboard-nvim')
-    end
-})
-
 -- Git integrations
 use({
   'lewis6991/gitsigns.nvim',
