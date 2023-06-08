@@ -289,6 +289,13 @@ use({
         end,
     })
 
+use({
+        'vim-test/vim-test',
+        config = function()
+            require('user/plugins/vim-test')
+        end,
+    })
+
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
