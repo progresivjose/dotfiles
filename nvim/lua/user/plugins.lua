@@ -202,15 +202,7 @@ use({
 use({
   'voldikss/vim-floaterm',
   config = function()
-        vim.g.floaterm_height = 0.3
-        vim.g.floaterm_wintype = 'split'
-        vim.keymap.set('n', '<F1>', ':FloatermToggle<CR>')
-        vim.keymap.set('t', '<F1>', '<C-\\><C-n>:FloatermToggle<CR>')
-
-        vim.cmd([[
-            highlight link Floaterm CursorLine
-            highlight link FloatermBorder CursorLine
-        ]])
+      require('user/plugins/vim-floaterm')
    end
 })
 
@@ -288,6 +280,31 @@ use({
         end,
     })
 
+use({ 
+    "catppuccin/nvim", 
+    as = "catppuccin",
+    config = function()
+        require('user/themes/catppuccin')
+    end
+})
+
+use({
+    'vim-vdebug/vdebug',
+    config = function()
+        -- require('user/plugins/vdebug')
+        vim.g.vdebug_options = { port = 9003 }
+    end
+})
+
+use({
+    'ThePrimeagen/harpoon',
+})
+
+
+use({
+    'wakatime/vim-wakatime',
+})
+
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
@@ -300,3 +317,4 @@ vim.cmd([[
     autocmd BufWritePost plugins.lua source <afile> 
   augroup end
 ]])
+

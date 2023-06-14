@@ -7,14 +7,31 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- PHP
 require('lspconfig').intelephense.setup({ capabilities = capabilities })
 
--- Vue, Javascript, Typescript
+-- Vue
 require'lspconfig'.volar.setup{
-   capabilities = capabilities, 
-  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+   capabilities = capabilities,
+  filetypes = { 'vue' }
 }
+
+-- Typescript, Javascript, React
+require('lspconfig').tsserver.setup({
+   capabilities = capabilities,
+   filetypes = { 'javascript', 'javascriptreact', 'typescrypt', 'typescriptreact', 'typescript.jsx', 'javascript.jsx' }
+   })
 
 -- Tailwind
 require('lspconfig').tailwindcss.setup({ capabilities = capabilities })
+
+-- Rust
+require'lspconfig'.rust_analyzer.setup{
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false;
+      }
+    }
+  }
+}
 
 -- null-ls
 require('null-ls').setup({
