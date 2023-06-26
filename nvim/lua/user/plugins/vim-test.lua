@@ -5,8 +5,7 @@ vim.keymap.set('n', '<Leader>tl', ':TestLast<CR>')
 vim.keymap.set('n', '<Leader>tv', ':TestVisit<CR>')
 
 vim.cmd([[
-  let test#php#phpunit#executable = 'php artisan test'
-  let test#php#phpunit#options = '--colors=always'
+  let test#php#phpunit#pest#executable = 'php artisan test'
 
   function! FloatermStrategy(cmd)
     execute 'silent FloatermKill scratch'

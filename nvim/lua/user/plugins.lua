@@ -264,6 +264,14 @@ use({
     end,
 })
 
+-- PHP PSR2
+use({
+    'stephpy/vim-php-cs-fixer',
+    config = function()
+        require('user/plugins/vim-php-cs-fixer')
+    end
+})
+
 -- Project Configuration
 use({
         'tpope/vim-projectionist',
