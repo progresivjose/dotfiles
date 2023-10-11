@@ -3,20 +3,19 @@ require('mason').setup()
 require('mason-lspconfig').setup({ automatic_installation = true })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- PHP
 require('lspconfig').intelephense.setup({ capabilities = capabilities })
 
 -- Vue
 require'lspconfig'.volar.setup{
-   capabilities = capabilities,
-  filetypes = { 'vue' }
+  filetypes = {'vue', 'json', 'typescript'}
 }
-
 -- Typescript, Javascript, React
 require('lspconfig').tsserver.setup({
    capabilities = capabilities,
-   filetypes = { 'javascript', 'javascriptreact', 'typescrypt', 'typescriptreact', 'typescript.jsx', 'javascript.jsx' }
+   filetypes = { 'javascript', 'javascriptreact', 'typescriptreact', 'typescript.jsx', 'javascript.jsx' }
    })
 
 -- Tailwind
@@ -48,6 +47,10 @@ require('null-ls').setup({
 
 require('mason-null-ls').setup({ automatic_installation = true })
 
+-- HTML
+require('lspconfig').html.setup({
+  capabilities=capabilities
+})
 -- Keymaps
 vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')

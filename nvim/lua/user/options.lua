@@ -3,6 +3,9 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 
+-- Typescript configs
+vim.cmd('autocmd FileType typescript,typescriptreact setlocal shiftwidth=2 tabstop=2 softtabstop=2')
+
 vim.opt.smartindent = true
 
 vim.opt.wrap = false

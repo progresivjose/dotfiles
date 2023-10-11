@@ -5,11 +5,11 @@ vim.keymap.set('n', '<Leader>tl', ':TestLast<CR>')
 vim.keymap.set('n', '<Leader>tv', ':TestVisit<CR>')
 
 vim.cmd([[
-  let test#php#phpunit#pest#executable = 'php artisan test'
+  let test#php#pest#executable = 'php artisan test'
 
   function! FloatermStrategy(cmd)
     execute 'silent FloatermKill scratch'
-    execute 'FloatermNew! --autoclose=2 --name=scratch '.a:cmd.' |less -X'
+    execute 'FloatermNew! --autoclose=2 --name=scratch '.a:cmd
   endfunction
 
   let g:test#custom_strategies = {'floaterm': function('FloatermStrategy')}

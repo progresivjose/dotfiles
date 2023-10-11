@@ -67,6 +67,10 @@ use({
     end,
 })
 
+use({
+    'windwp/nvim-ts-autotag'
+})
+
 -- Add smooth scrolling to avoid jarring jumps
 use({
     'karb94/neoscroll.nvim',
@@ -198,6 +202,11 @@ use({
     requires = 'tpope/vim-rhubarb'
 })
 
+-- Git Fugitive Bitbucket
+use({
+    'tommcdo/vim-fubitive'
+})
+
 -- floating terminal
 use({
   'voldikss/vim-floaterm',
@@ -220,6 +229,15 @@ use({
         require('user.plugins.treesitter')
     end,
 })
+
+use({
+    'nvim-treesitter/nvim-treesitter-context',
+    config = function()
+        require('user.plugins.treesitter-context')
+    end
+})
+
+use({'ap/vim-css-color'})
 
 -- LSP configs
 use({
@@ -308,11 +326,46 @@ use({
     'ThePrimeagen/harpoon',
 })
 
-
 use({
     'wakatime/vim-wakatime',
 })
 
+use({
+    'mattn/emmet-vim'
+})
+
+-- Prettier
+use({
+    'prettier/vim-prettier',
+    config = function()
+        require('user/plugins/prettier')
+    end
+})
+
+-- TSX
+use({
+    'tasn/vim-tsx'
+})
+
+-- Markdown Preview
+use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
+use({
+    'HiPhish/rainbow-delimiters.nvim',
+    config = function()
+        require('user/plugins/rainbow-delimiters')
+    end
+})
+
+use({
+    "rafamadriz/friendly-snippets",
+    config = function()
+        require('user/plugins/friendly-snippets')
+    end
+});
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
@@ -322,7 +375,7 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> 
+    autocmd BufWritePost plugins.lua source <afile>
   augroup end
 ]])
 
