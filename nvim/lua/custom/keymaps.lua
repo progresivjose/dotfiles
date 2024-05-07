@@ -14,6 +14,10 @@ return {
     vim.keymap.set('x', '<A-j>', ":move '>+1<CR>gv-gv")
     vim.keymap.set('x', '<A-k>', ":move '<-2<CR>gv-gv")
     vim.keymap.set('n', '<A-j>', ':move .+1<CR>==')
-    vim.keymap.set('n', '<A-k>', ':move .-2<CR>==')
+
+    -- set TAB to autosugestion
+    local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+    vim.keymap.set('i', '<TAB>', 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+    vim.keymap.set('i', '<S-TAB>', [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
   end,
 }

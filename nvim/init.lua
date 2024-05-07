@@ -192,6 +192,11 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- set TAB for autosugestions
+local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+vim.keymap.set('i', '<TAB>', 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+vim.keymap.set('i', '<S-TAB>', [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -838,7 +843,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'php', 'php_only' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -870,15 +875,15 @@ require('lazy').setup({
       parser_config.blade = {
         install_info = {
           url = 'https://github.com/EmranMR/tree-sitter-blade',
-          files = {
-            'src/parser.c',
-            -- 'src/scanner.cc',
-          },
+          files = { 'src/parser.c' },
           branch = 'main',
-          generate_requires_npm = true,
-          requires_generate_from_grammar = true,
         },
         filetype = 'blade',
+      }
+      vim.filetype.add {
+        pattern = {
+          ['.*%.blade%.php'] = 'blade',
+        },
       }
     end,
   },
