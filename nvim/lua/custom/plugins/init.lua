@@ -40,54 +40,11 @@ return {
   -- Pairs of hande brackets mappings, like [b and ]b
   'tpope/vim-unimpaired',
 
-  -- File tree
-  {
-    'nvim-tree/nvim-tree.lua',
-    version = '*',
-    lazy = false,
-    dependecies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = function()
-      require('nvim-tree').setup {
-        git = {
-          ignore = false,
-        },
-        renderer = {
-          highlight_opened_files = 'all',
-          group_empty = true,
-          icons = {
-            show = {
-              folder_arrow = false,
-            },
-          },
-          indent_markers = {
-            enable = true,
-          },
-        },
-      }
-    end,
-  },
-
   -- Navigate seamlessly between Vim windows and Tmux panes
   'christoomey/vim-tmux-navigator',
 
   -- Jump to the last location when opening a file.
   'farmergreg/vim-lastplace',
-
-  {
-    'nvim-lualine/lualine.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
-    ops = {
-      options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-        globalstatus = true,
-      },
-    },
-  },
 
   -- Add Support for floating terminal
   {
@@ -166,4 +123,7 @@ return {
   --
   -- Automatically create parent dirs when saving
   { 'jessarcher/vim-heritage' },
+
+  -- Context awareness
+  { 'nvim-treesitter/nvim-treesitter-context' },
 }
