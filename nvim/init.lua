@@ -707,6 +707,7 @@ require('lazy').setup({
             'rafamadriz/friendly-snippets',
             config = function()
               require('luasnip.loaders.from_vscode').lazy_load()
+              require('luasnip.loaders.from_snipmate').lazy_load()
             end,
           },
         },
@@ -791,6 +792,8 @@ require('lazy').setup({
           { name = 'path' },
         },
       }
+
+      luasnip.filetype_extend('php', { 'phpdoc' })
     end,
   },
 

@@ -1,0 +1,56 @@
+snippet pubf "public method"
+    public function ${1}(${2}): $3
+    {
+        ${0}
+    }
+
+
+snippet prof "public method"
+    protected function ${1}(${2}): $3
+    {
+        ${0}
+    }
+
+snippet privf "private method"
+    private function ${1}(${2}): $3
+    {
+        ${0}
+    }
+
+
+snippet testt "test method (prefix)"
+    public function test_${1}()
+    {
+        ${0}
+    }
+
+
+snippet testa "test method (annotation)"
+    /** @test */
+    public function ${1}()
+    {
+        ${0}
+    }
+
+
+snippet tests "test setup method"
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        ${0}
+    }
+
+snippet ptestt "pest test"
+    test("${1}", function () {
+        ${0}
+    });
+
+snippet ptesti "pest it"
+    it("${1}", function () {
+        ${0}
+    });
+
+
+snippet ltpost "post test"
+    $this->post(route("${1}"), [${0}]);
