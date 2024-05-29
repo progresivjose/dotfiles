@@ -126,4 +126,7 @@ return {
 
   -- Context awareness
   { 'nvim-treesitter/nvim-treesitter-context' },
+
+  -- Do you like colors?
+  { 'HiPhish/rainbow-delimiters.nvim' },
 }
