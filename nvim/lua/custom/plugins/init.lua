@@ -129,4 +129,12 @@ return {
 
   -- Do you like colors?
   { 'HiPhish/rainbow-delimiters.nvim' },
+
+  -- Do you like AI?
+  {
+    'supermaven-inc/supermaven-nvim',
+    config = function()
+      require('supermaven-nvim').setup {}
+    end,
+  },
 }
