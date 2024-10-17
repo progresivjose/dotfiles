@@ -27,3 +27,6 @@ ln -s $DOTFILES/nvim $HOME/.config/nvim
 
 rm -rf $HOME/.config/phpactor
 ln -s $DOTFILES/phpactor $HOME/.config/phpactor
+
+rm -rf $HOME/.config/aerospace
+ln -s $DOTFILES/aerospace $HOME/.config/aerospace
